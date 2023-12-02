@@ -13,3 +13,10 @@ example:
 # run the solution for the second part of day 1
 go run . -- 1B  
 ```
+
+## Tests
+
+```
+# run all tests
+go test -v ./...
+```

@@ -10,6 +10,47 @@ import (
 	"github.com/thoas/go-funk"
 )
 
+func Day01A(input []string) (int, error) {
+	if input == nil {
+		input = utils.ReadLines("./days/inputs/01.txt")
+	}
+
+	digitRegexp := regexp.MustCompile("\\d")
+
+	values := funk.Map(input, func(line string) int {
+		digits := digitRegexp.FindAllString(line, -1)
+		lineValue := digits[0] + funk.Last(digits).(string)
+		lineNumber, error := strconv.Atoi(lineValue)
+		if error != nil {
+			log.Fatal(error)
+		}
+		return lineNumber
+	}).([]int)
+
+	solution := funk.SumInt(values)
+	return solution, nil
+}
+
+func Day01B(input []string) (int, error) {
+	if input == nil {
+		input = utils.ReadLines("./days/inputs/01.txt")
+	}
+
+	values := funk.Map(input, func(line string) int {
+
+		firstDigit, lastDigit := findExternalDigits(line)
+		lineNumber, error := strconv.Atoi(firstDigit + lastDigit)
+		if error != nil {
+			log.Fatal(error)
+		}
+
+		return lineNumber
+	}).([]int)
+
+	solution := funk.SumInt(values)
+	return solution, nil
+}
+
 var cardinalValues = map[string]string{
 	"one":   "1",
 	"two":   "2",
@@ -24,24 +65,6 @@ var cardinalValues = map[string]string{
 }
 
 var digitRegexp = regexp.MustCompile("\\d")
-
-func Day01B() (int, error) {
-	inputLines := utils.ReadLines("./days/inputs/01A.txt")
-
-	values := funk.Map(inputLines, func(line string) int {
-
-		firstDigit, lastDigit := findExternalDigits(line)
-		lineNumber, error := strconv.Atoi(firstDigit + lastDigit)
-		if error != nil {
-			log.Fatal(error)
-		}
-
-		return lineNumber
-	}).([]int)
-
-	solution := funk.SumInt(values)
-	return solution, nil
-}
 
 type cardinalPosition struct {
 	index int

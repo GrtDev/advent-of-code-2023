@@ -7,22 +7,28 @@ import (
 	"os"
 )
 
-var solutions = map[string]func()(int, error){
+var solutions = map[string]func([]string) (int, error){
 	"1A": days.Day01A,
 	"1B": days.Day01B,
+	"2A": days.Day02A,
+	"2B": days.Day02B,
 }
 
 func main() {
 	day := os.Args[2]
 	fmt.Println("Running solution for day: \"" + day + "\"")
 
-	solution, ok := solutions[day];
+	solution, ok := solutions[day]
 
-	if !ok { log.Fatal("No day specified - or - day specified has not been implemented") } 
+	if !ok {
+		log.Fatal("No day specified - or - day specified has not been implemented")
+	}
 
-	result, err := solution()
+	result, err := solution(nil)
 
-	if err != nil { log.Fatal(err) }
+	if err != nil {
+		log.Fatal(err)
+	}
 
 	fmt.Printf("The answer is: %d\n", result)
 }
