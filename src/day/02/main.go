@@ -1,4 +1,4 @@
-package days
+package day02
 
 import (
 	"advent-of-code-2023/utils"
@@ -20,9 +20,9 @@ type game struct {
 	grabs []colorCount
 }
 
-func Day02A(input []string) (int, error) {
+func RunA(input []string) (int, error) {
 	if input == nil {
-		input = utils.ReadLines("./days/inputs/02.txt")
+		input = utils.ReadLines("./day/02/input.txt")
 	}
 
 	games := parseInput(input)
@@ -42,9 +42,9 @@ func Day02A(input []string) (int, error) {
 	return sumPossibleGameId, nil
 }
 
-func Day02B(input []string) (int, error) {
+func RunB(input []string) (int, error) {
 	if input == nil {
-		input = utils.ReadLines("./days/inputs/02.txt")
+		input = utils.ReadLines("./day/02/input.txt")
 	}
 
 	games := parseInput(input)

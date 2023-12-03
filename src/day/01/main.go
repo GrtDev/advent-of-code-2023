@@ -1,4 +1,4 @@
-package days
+package day01
 
 import (
 	"advent-of-code-2023/utils"
@@ -10,9 +10,9 @@ import (
 	"github.com/thoas/go-funk"
 )
 
-func Day01A(input []string) (int, error) {
+func RunA(input []string) (int, error) {
 	if input == nil {
-		input = utils.ReadLines("./days/inputs/01.txt")
+		input = utils.ReadLines("./day/01/input.txt")
 	}
 
 	digitRegexp := regexp.MustCompile("\\d")
@@ -31,9 +31,9 @@ func Day01A(input []string) (int, error) {
 	return solution, nil
 }
 
-func Day01B(input []string) (int, error) {
+func RunB(input []string) (int, error) {
 	if input == nil {
-		input = utils.ReadLines("./days/inputs/01.txt")
+		input = utils.ReadLines("./day/01/input.txt")
 	}
 
 	values := funk.Map(input, func(line string) int {

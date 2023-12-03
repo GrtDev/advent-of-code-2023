@@ -1,14 +1,14 @@
-package days
+package day02
 
 import (
 	"advent-of-code-2023/utils"
 	"testing"
 )
 
-func TestDay02A(t *testing.T) {
-	input := utils.ReadLines("./inputs/02_test.txt")
+func TestA(t *testing.T) {
+	input := utils.ReadLines("./test.txt")
 
-	result, err := Day02A(input)
+	result, err := RunA(input)
 	expected := 8
 
 	if err != nil {
@@ -20,10 +20,10 @@ func TestDay02A(t *testing.T) {
 	}
 }
 
-func TestDay02B(t *testing.T) {
-	input := utils.ReadLines("./inputs/02_test.txt")
+func TestB(t *testing.T) {
+	input := utils.ReadLines("./test.txt")
 
-	result, err := Day02B(input)
+	result, err := RunB(input)
 	expected := 2286
 
 	if err != nil {
