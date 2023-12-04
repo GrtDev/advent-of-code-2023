@@ -4,9 +4,13 @@ import (
 	day01 "advent-of-code-2023/day/01"
 	day02 "advent-of-code-2023/day/02"
 	day03 "advent-of-code-2023/day/03"
+	day04 "advent-of-code-2023/day/04"
 	"fmt"
 	"log"
 	"os"
+	"strconv"
+
+	"github.com/atotto/clipboard"
 )
 
 var solutions = map[string]func([]string) (int, error){
@@ -16,6 +20,8 @@ var solutions = map[string]func([]string) (int, error){
 	"2B": day02.RunB,
 	"3A": day03.RunA,
 	"3B": day03.RunB,
+	"4A": day04.RunA,
+	"4B": day04.RunB,
 }
 
 func main() {
@@ -34,5 +40,11 @@ func main() {
 		log.Fatal(err)
 	}
 
-	fmt.Printf("The answer is: %d\n", result)
+	copiedMessage := "  -  ✗ Could not copy to clipboard"
+	if clipboard.Unsupported == false {
+		clipboard.WriteAll(strconv.Itoa(result))
+		copiedMessage = "  -  ✓ Copied to clipboard!"
+	}
+
+	fmt.Printf("\n> The answer is: %d%v\n\n", result, copiedMessage)
 }
