@@ -4,9 +4,11 @@ import (
 	"fmt"
 	"strconv"
 	"strings"
+
+	"github.com/thoas/go-funk"
 )
 
-func StringsToInts(input string) ([]int, error) {
+func StringToInts(input string) ([]int, error) {
 	values := []int{}
 	for _, stringValue := range strings.Split(input, " ") {
 		if stringValue == "" {
@@ -20,4 +22,10 @@ func StringsToInts(input string) ([]int, error) {
 		values = append(values, value)
 	}
 	return values, nil
+}
+
+func DropEmptyStrings(input []string) []string {
+	return funk.Filter(input, func(x string) bool {
+		return x != ""
+	}).([]string)
 }

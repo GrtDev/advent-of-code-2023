@@ -7,10 +7,16 @@ import (
 	"strings"
 )
 
-func RunA(input []string) (int, error) {
-	if input == nil {
-		input = utils.ReadLines("./day/03/input.txt")
+func getInput(inputFile string) []string {
+	if inputFile != "" {
+		return utils.ReadParagraphs(inputFile)
+	} else {
+		return utils.ReadParagraphs("./day/05/input.txt")
 	}
+}
+
+func RunA(inputFile string) (int, error) {
+	var input []string = getInput(inputFile)
 
 	matrix2d := parseInput(input)
 	totalValue := 0
@@ -21,9 +27,12 @@ func RunA(input []string) (int, error) {
 	return totalValue, nil
 }
 
-func RunB(input []string) (int, error) {
-	if input == nil {
-		input = utils.ReadLines("./day/03/input.txt")
+func RunB(inputFile string) (int, error) {
+	var input []string
+	if inputFile != "" {
+		input = utils.ReadLines(inputFile)
+	} else {
+		input = utils.ReadLines("./input.txt")
 	}
 
 	matrix2d := parseInput(input)

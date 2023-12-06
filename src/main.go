@@ -5,6 +5,7 @@ import (
 	day02 "advent-of-code-2023/day/02"
 	day03 "advent-of-code-2023/day/03"
 	day04 "advent-of-code-2023/day/04"
+	day05 "advent-of-code-2023/day/05"
 	"fmt"
 	"log"
 	"os"
@@ -13,7 +14,7 @@ import (
 	"github.com/atotto/clipboard"
 )
 
-var solutions = map[string]func([]string) (int, error){
+var solutions = map[string]func(string) (int, error){
 	"1A": day01.RunA,
 	"1B": day01.RunB,
 	"2A": day02.RunA,
@@ -22,6 +23,8 @@ var solutions = map[string]func([]string) (int, error){
 	"3B": day03.RunB,
 	"4A": day04.RunA,
 	"4B": day04.RunB,
+	"5A": day05.RunA,
+	"5B": day05.RunB,
 }
 
 func main() {
@@ -34,7 +37,7 @@ func main() {
 		log.Fatal("No day specified - or - day specified has not been implemented")
 	}
 
-	result, err := solution(nil)
+	result, err := solution("")
 
 	if err != nil {
 		log.Fatal(err)

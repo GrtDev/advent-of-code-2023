@@ -1,14 +1,11 @@
 package day04
 
 import (
-	"advent-of-code-2023/utils"
 	"testing"
 )
 
 func TestA(t *testing.T) {
-	input := utils.ReadLines("./test.txt")
-
-	result, err := RunA(input)
+	result, err := RunA("./test.txt")
 	expected := 13
 
 	if err != nil {
@@ -21,9 +18,7 @@ func TestA(t *testing.T) {
 }
 
 func TestB(t *testing.T) {
-	input := utils.ReadLines("./test.txt")
-
-	result, err := RunB(input)
+	result, err := RunB("./test.txt")
 	expected := 30
 
 	if err != nil {

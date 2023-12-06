@@ -10,10 +10,16 @@ import (
 	"github.com/thoas/go-funk"
 )
 
-func RunA(input []string) (int, error) {
-	if input == nil {
-		input = utils.ReadLines("./day/01/input.txt")
+func getInput(inputFile string) []string {
+	if inputFile != "" {
+		return utils.ReadParagraphs(inputFile)
+	} else {
+		return utils.ReadParagraphs("./day/01/input.txt")
 	}
+}
+
+func RunA(inputFile string) (int, error) {
+	var input []string = getInput(inputFile)
 
 	digitRegexp := regexp.MustCompile("\\d")
 
@@ -31,10 +37,8 @@ func RunA(input []string) (int, error) {
 	return solution, nil
 }
 
-func RunB(input []string) (int, error) {
-	if input == nil {
-		input = utils.ReadLines("./day/01/input.txt")
-	}
+func RunB(inputFile string) (int, error) {
+	var input []string = getInput(inputFile)
 
 	values := funk.Map(input, func(line string) int {
 

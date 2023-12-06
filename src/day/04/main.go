@@ -14,10 +14,16 @@ type card struct {
 	numCopies  int
 }
 
-func RunA(input []string) (int, error) {
-	if input == nil {
-		input = utils.ReadLines("./day/04/input.txt")
+func getInput(inputFile string) []string {
+	if inputFile != "" {
+		return utils.ReadParagraphs(inputFile)
+	} else {
+		return utils.ReadParagraphs("./day/05/input.txt")
 	}
+}
+
+func RunA(inputFile string) (int, error) {
+	var input []string = getInput(inputFile)
 
 	cards := parseInput(input)
 
@@ -33,9 +39,12 @@ func RunA(input []string) (int, error) {
 	return totalValue, nil
 }
 
-func RunB(input []string) (int, error) {
-	if input == nil {
-		input = utils.ReadLines("./day/04/input.txt")
+func RunB(inputFile string) (int, error) {
+	var input []string
+	if inputFile != "" {
+		input = utils.ReadLines(inputFile)
+	} else {
+		input = utils.ReadLines("./input.txt")
 	}
 
 	cards := parseInput(input)
@@ -61,8 +70,8 @@ func parseInput(input []string) []card {
 	for _, line := range input {
 		matches := cardRegexp.FindStringSubmatch(line)
 		if len(matches) > 0 {
-			winning, errWinning := utils.StringsToInts(matches[1])
-			numbers, errNumbers := utils.StringsToInts(matches[2])
+			winning, errWinning := utils.StringToInts(matches[1])
+			numbers, errNumbers := utils.StringToInts(matches[2])
 
 			numbersWon := funk.FilterInt(numbers, func(number int) bool {
 				return funk.ContainsInt(winning, number)

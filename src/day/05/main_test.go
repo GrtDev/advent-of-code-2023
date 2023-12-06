@@ -1,4 +1,4 @@
-package day03
+package day05
 
 import (
 	"testing"
@@ -6,7 +6,7 @@ import (
 
 func TestA(t *testing.T) {
 	result, err := RunA("./test.txt")
-	expected := 4361
+	expected := 35
 
 	if err != nil {
 		t.Fatal(err)
@@ -19,7 +19,7 @@ func TestA(t *testing.T) {
 
 func TestB(t *testing.T) {
 	result, err := RunB("./test.txt")
-	expected := 467835
+	expected := 46
 
 	if err != nil {
 		t.Fatal(err)
