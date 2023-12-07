@@ -7,6 +7,7 @@ import (
 	day04 "advent-of-code-2023/day/04"
 	day05 "advent-of-code-2023/day/05"
 	day06 "advent-of-code-2023/day/06"
+	day07 "advent-of-code-2023/day/07"
 	"fmt"
 	"log"
 	"os"
@@ -29,6 +30,8 @@ var solutions = map[string]func(string) (int, error){
 	"5B": day05.RunB,
 	"6A": day06.RunA,
 	"6B": day06.RunB,
+	"7A": day07.RunA,
+	"7B": day07.RunB,
 }
 
 func main() {
