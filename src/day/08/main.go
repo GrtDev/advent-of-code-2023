@@ -1,7 +1,8 @@
-package day07
+package day08
 
 import (
 	"advent-of-code-2023/utils"
+	"fmt"
 	"regexp"
 	"strings"
 
@@ -42,6 +43,8 @@ func RunB(inputFile string) (int, error) {
 	steps := funk.Map(startingNumbers, func(node string) int {
 		return stepsToZ(node, nodes, sequence)
 	}).([]int)
+
+	fmt.Printf("%v\n", steps)
 
 	intersection := findMultiplicationIntersection(steps)
 
@@ -93,12 +96,6 @@ func calculateSteps(start string, target string, nodesMap map[string][]string, s
 	}
 
 	return i
-}
-
-func step(node string, nodesMap map[string][]string, dir Direction) string {
-	nodePath := nodesMap[node]
-	nextNode := nodePath[dir]
-	return nextNode
 }
 
 func stepsToZ(node string, nodesMap map[string][]string, sequence []Direction) int {
