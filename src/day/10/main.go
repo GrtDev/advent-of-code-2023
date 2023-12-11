@@ -287,35 +287,21 @@ func findPipeType(dir1 point, dir2 point) TileType {
 	panic("no pipe type found")
 }
 
-func getEnclosedTilesCount(tiles []tile, matrix [][]tile) int {
+func getEnclosedTilesCount(loop []tile, matrix [][]tile) int {
 	loopMatrix := make([][]tile, len(matrix))
 
-	for _, tile := range tiles {
+	for _, tile := range loop {
 		loopMatrix[tile.y] = append(loopMatrix[tile.y], tile)
 	}
 
 	total := 0
-	for y, row := range loopMatrix {
+	for _, row := range loopMatrix {
 		sort.SliceStable(row, func(i, j int) bool {
 			return row[i].x < row[j].x
 		})
-		loopMatrix[y] = row
-		rowCount := countEnclosedTiles(row)
-
-		total += rowCount
+		total += countEnclosedTiles(row)
 	}
-
 	return total
-}
-
-func isClosed(t1 tile, t2 tile) bool {
-	return t1.tileType == SouthEastPipe && t2.tileType == SouthWestPipe ||
-		t1.tileType == NorthEastPipe && t2.tileType == NorthWestPipe
-}
-
-func isOpenEnded(t1 tile, t2 tile) bool {
-	return t1.tileType == SouthEastPipe && t2.tileType == NorthWestPipe ||
-		t1.tileType == SouthWestPipe && t2.tileType == NorthEastPipe
 }
 
 func countEnclosedTiles(row []tile) int {
@@ -332,7 +318,7 @@ func countEnclosedTiles(row []tile) int {
 
 	current := tile{}
 	prev := tile{}
-	insideStartId := -1
+	insideStart := -1
 
 	for i := 0; i < leni; i++ {
 		current = pipes[i]
@@ -342,39 +328,39 @@ func countEnclosedTiles(row []tile) int {
 
 		switch current.tileType {
 		case VerticalPipe:
-			if insideStartId == -1 {
-				insideStartId = i
+			if insideStart == -1 {
+				insideStart = i
 				continue
 			}
-			insideStartId = -1
+			insideStart = -1
 
 			break
 		case NorthEastPipe:
-			if insideStartId == -1 {
-				insideStartId = i
+			if insideStart == -1 {
+				insideStart = i
 				continue
 			}
 			break
 		case SouthEastPipe:
-			if insideStartId == -1 {
-				insideStartId = i
+			if insideStart == -1 {
+				insideStart = i
 				continue
 			}
 			break
 		case NorthWestPipe:
-			if insideStartId != -1 {
-				if (prev.tileType == NorthEastPipe && insideStartId == i-1) ||
-					(prev.tileType == SouthEastPipe && insideStartId < i-1) {
-					insideStartId = -1
+			if insideStart != -1 {
+				if (prev.tileType == NorthEastPipe && insideStart == i-1) ||
+					(prev.tileType == SouthEastPipe && insideStart < i-1) {
+					insideStart = -1
 					continue
 				}
 			}
 			continue
 		case SouthWestPipe:
-			if insideStartId != -1 {
-				if (prev.tileType == SouthEastPipe && insideStartId == i-1) ||
-					(prev.tileType == NorthEastPipe && insideStartId < i-1) {
-					insideStartId = -1
+			if insideStart != -1 {
+				if (prev.tileType == SouthEastPipe && insideStart == i-1) ||
+					(prev.tileType == NorthEastPipe && insideStart < i-1) {
+					insideStart = -1
 					continue
 				}
 			}
@@ -387,8 +373,7 @@ func countEnclosedTiles(row []tile) int {
 			continue
 		}
 
-		setCount := current.x - prev.x - 1
-		count += setCount
+		count += current.x - prev.x - 1
 	}
 
 	return count

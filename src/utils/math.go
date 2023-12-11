@@ -10,3 +10,14 @@ func PowInt(x int, y int) int {
 	}
 	return result
 }
+
+func AbsInt(x int) int {
+	return absDiffInt(x, 0)
+}
+
+func absDiffInt(x, y int) int {
+	if x < y {
+		return y - x
+	}
+	return x - y
+}
