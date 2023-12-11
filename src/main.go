@@ -10,6 +10,7 @@ import (
 	day07 "advent-of-code-2023/day/07"
 	day08 "advent-of-code-2023/day/08"
 	day09 "advent-of-code-2023/day/09"
+	day10 "advent-of-code-2023/day/10"
 	"fmt"
 	"log"
 	"os"
@@ -20,24 +21,26 @@ import (
 )
 
 var solutions = map[string]func(string) (int, error){
-	"1A": day01.RunA,
-	"1B": day01.RunB,
-	"2A": day02.RunA,
-	"2B": day02.RunB,
-	"3A": day03.RunA,
-	"3B": day03.RunB,
-	"4A": day04.RunA,
-	"4B": day04.RunB,
-	"5A": day05.RunA,
-	"5B": day05.RunB,
-	"6A": day06.RunA,
-	"6B": day06.RunB,
-	"7A": day07.RunA,
-	"7B": day07.RunB,
-	"8A": day08.RunA,
-	"8B": day08.RunB,
-	"9A": day09.RunA,
-	"9B": day09.RunB,
+	"1A":  day01.RunA,
+	"1B":  day01.RunB,
+	"2A":  day02.RunA,
+	"2B":  day02.RunB,
+	"3A":  day03.RunA,
+	"3B":  day03.RunB,
+	"4A":  day04.RunA,
+	"4B":  day04.RunB,
+	"5A":  day05.RunA,
+	"5B":  day05.RunB,
+	"6A":  day06.RunA,
+	"6B":  day06.RunB,
+	"7A":  day07.RunA,
+	"7B":  day07.RunB,
+	"8A":  day08.RunA,
+	"8B":  day08.RunB,
+	"9A":  day09.RunA,
+	"9B":  day09.RunB,
+	"10A": day10.RunA,
+	"10B": day10.RunB,
 }
 
 func main() {
