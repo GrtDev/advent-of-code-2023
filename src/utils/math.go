@@ -21,3 +21,15 @@ func absDiffInt(x, y int) int {
 	}
 	return x - y
 }
+
+func CombinationsInt(n int, r int) int {
+
+	result := 1
+
+	for i := 0; i < r; i++ {
+		result *= (n - i)
+		result /= (i + 1)
+	}
+
+	return result
+}

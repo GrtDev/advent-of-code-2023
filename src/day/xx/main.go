@@ -31,7 +31,7 @@ func RunB(inputFile string) (int, error) {
 func parseInput(input []string) [][]int {
 	parsedInput := [][]int{}
 	for _, line := range input {
-		values, _ := utils.StringToInts(line)
+		values, _ := utils.StringToInts(line, " ")
 		parsedInput = append(parsedInput, values)
 	}
 	return parsedInput

@@ -70,8 +70,8 @@ func parseInput(input []string) []card {
 	for _, line := range input {
 		matches := cardRegexp.FindStringSubmatch(line)
 		if len(matches) > 0 {
-			winning, errWinning := utils.StringToInts(matches[1])
-			numbers, errNumbers := utils.StringToInts(matches[2])
+			winning, errWinning := utils.StringToInts(matches[1], " ")
+			numbers, errNumbers := utils.StringToInts(matches[2], " ")
 
 			numbersWon := funk.FilterInt(numbers, func(number int) bool {
 				return funk.ContainsInt(winning, number)

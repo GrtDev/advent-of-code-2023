@@ -35,3 +35,21 @@ func ToParagraphs(content string) []string {
 	content = strings.Trim(content, "\n")
 	return strings.Split(content, "\n\n")
 }
+
+func ToRows(content string) []string {
+	return ToLines(content)
+}
+
+func ToColumns(content string) []string {
+	rows := ToRows(content)
+	rowsLength := len(rows[0])
+	columns := make([]string, rowsLength)
+
+	for _, row := range rows {
+		for x, value := range row {
+			columns[x] += string(value)
+		}
+	}
+
+	return columns
+}

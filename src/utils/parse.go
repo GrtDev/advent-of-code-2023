@@ -8,9 +8,9 @@ import (
 	"github.com/thoas/go-funk"
 )
 
-func StringToInts(input string) ([]int, error) {
+func StringToInts(input string, seperator string) ([]int, error) {
 	values := []int{}
-	for _, stringValue := range strings.Split(input, " ") {
+	for _, stringValue := range strings.Split(input, seperator) {
 		if stringValue == "" {
 			continue
 		}

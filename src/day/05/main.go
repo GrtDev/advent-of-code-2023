@@ -80,7 +80,7 @@ func RunB(inputFile string) (int, error) {
 func parseSeedsString(input string) []int {
 	seedsRegexp := regexp.MustCompile(`seeds:([\d\s]+)`)
 	match := seedsRegexp.FindStringSubmatch(input)
-	seeds, _ := utils.StringToInts(match[1])
+	seeds, _ := utils.StringToInts(match[1], " ")
 	return seeds
 }
 
@@ -93,7 +93,7 @@ func parseMaps(input []string) []indexMap {
 		rangeStrings := utils.DropEmptyStrings(strings.Split(matches[3], "\n"))
 
 		ranges := funk.Map(rangeStrings, func(rangeString string) indexRangeMap {
-			rangeNumbers, _ := utils.StringToInts(rangeString)
+			rangeNumbers, _ := utils.StringToInts(rangeString, " ")
 			return indexRangeMap{
 				destination: rangeNumbers[0],
 				start:       rangeNumbers[1],

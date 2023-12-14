@@ -46,8 +46,8 @@ func RunB(inputFile string) (int, error) {
 }
 
 func parseRaceResultsA(input []string) []raceResult {
-	raceTimes, _ := utils.StringToInts(strings.Split(input[0], ":")[1])
-	raceDistances, _ := utils.StringToInts(strings.Split(input[1], ":")[1])
+	raceTimes, _ := utils.StringToInts(strings.Split(input[0], ":")[1], " ")
+	raceDistances, _ := utils.StringToInts(strings.Split(input[1], ":")[1], " ")
 
 	raceResults := []raceResult{}
 	for i, raceTime := range raceTimes {

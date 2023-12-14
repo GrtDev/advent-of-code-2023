@@ -43,7 +43,7 @@ func RunB(inputFile string) (int, error) {
 func parseReadings(input []string) [][]int {
 	readings := [][]int{}
 	for _, line := range input {
-		values, _ := utils.StringToInts(line)
+		values, _ := utils.StringToInts(line, " ")
 		readings = append(readings, values)
 
 	}
