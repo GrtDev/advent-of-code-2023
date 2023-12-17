@@ -1,8 +1,8 @@
 package day13
 
 import (
+	"advent-of-code-2023/old/matrix"
 	"advent-of-code-2023/utils"
-	"advent-of-code-2023/utils/matrix"
 	"fmt"
 	"log"
 )

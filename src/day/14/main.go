@@ -1,9 +1,9 @@
 package day14
 
 import (
+	"advent-of-code-2023/old/matrix"
+	mat "advent-of-code-2023/old/matrix"
 	"advent-of-code-2023/utils"
-	"advent-of-code-2023/utils/matrix"
-	mat "advent-of-code-2023/utils/matrix"
 	"fmt"
 	"log"
 	"regexp"
